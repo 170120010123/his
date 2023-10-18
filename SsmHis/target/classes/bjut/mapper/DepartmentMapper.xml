@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="bjut.mapper.DepartmentMapper">
+    <select id="select" resultType="bjut.pojo.Department">
+
+    select * from department
+</select>
+<select id="selectByName" resultType="bjut.pojo.Department">
+       select floor from department where dpname=#{dpname}
+
+</select>
+
+</mapper>

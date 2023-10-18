@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bjut.mapper.RegisterMapper">
+    <select id="selectAll" resultType="bjut.pojo.Register">
+
+    select * from register
+</select>
+    <insert id="insert">
+
+        insert into register values(null,#{name},#{age},#{sex},#{department}, #{time},null,#{doctor},null,null,#{money})
+
+    </insert>
+<update id="pay">
+    update  register  set state=1 where  name=#{name} and    <![CDATA[time= #{time,jdbcType=DATE}  ]]>  and doctor =#{doctor}
+
+
+
+</update>
+    <select id="selectByName" resultType="bjut.pojo.Register">
+
+    select * from register where name=#{name}
+</select>
+    <select id="selectByTwo" resultType="bjut.pojo.Register">
+
+    select * from register where name=#{name} and department=#{department}
+</select>
+    <select id="smap" resultType="map">
+
+   select department,count(department) as countss from register where name=#{name}  group by department
+</select>
+</mapper>

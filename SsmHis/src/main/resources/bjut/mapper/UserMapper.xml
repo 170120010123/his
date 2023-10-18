@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="bjut.mapper.UserMapper">
+    <resultMap id="rs" type="bjut.pojo.User">
+        <result property="id" column="id"></result>
+<result property="username" column="username"></result>
+        <association property="product" javaType="bjut.pojo.Product">
+        <id property="pid" column="pid"></id>
+<result property="pimage" column="pimage"></result></association>
+    </resultMap>
+
+    <select id="login" resultType="bjut.pojo.User">
+
+    select * from user where username=#{username} and  password=#{password}
+
+</select>
+    <select id="selectAll" resultType="bjut.pojo.User">
+
+    select username ,sex,age,phone,address,idcard from  user
+
+</select>
+    <select id="selectByName1" resultType="bjut.pojo.User">
+
+    select *  from  user where username=#{username}
+
+</select>
+<update id="update">
+    update user  set
+
+        money=#{money}      where username=#{username}
+
+
+
+
+</update><update id="update1">
+    update user  set
+
+        username=#{username},age=#{age},sex=#{sex},idcard=#{idcard},phone=#{phone} ,pid=#{pid}    where username=#{username}
+
+
+
+
+</update>
+
+<insert id="insert">
+
+
+    insert  into user values(null,#{username},#{password},null,null,null,null,null,1000,17)
+</insert>
+<select id="selectpic" resultMap="rs">
+select  u.username, p.pimage from user u join product p  on u.pid=p.pid where u.username=#{username}
+</select>
+
+</mapper>

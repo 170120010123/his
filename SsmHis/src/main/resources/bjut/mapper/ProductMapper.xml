@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="bjut.mapper.ProductMapper">
+
+    <insert id="insert" useGeneratedKeys="true"   keyProperty="pid" >
+        insert into product values ( #{pid},#{pimage})
+    </insert>
+
+    <select id="select" resultType="bjut.pojo.Product">
+        select * from product where pid=#{pid}
+    </select>
+
+</mapper>
